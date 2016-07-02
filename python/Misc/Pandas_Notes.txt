@@ -1,0 +1,89 @@
+# This is Pandas Study Notes
+
+---------------------------------------------
+# Questions:
+- s=series(x)
+- s=s[1:]+s[:-1]
+
+---------------------------------------------
+# General Commands:
+
+---------------------------------------------
+# DataStrucutre
+~ Series
+- Series(values,index)
+- ds=pd.Series([1,3,5,np.nan,6,8])
+
+~ date_range
+- date_range(start,steps)
+- dr=pd.date_range('20130101',periods=6)
+
+~ DataFrame
+- DataFrame(value,row_index,col_index)
+- df=pd.DataFrame(np.random.randn(6,4),index=dates,columns=list('ABCD'))
+- df2=pd.DataFrame({'A':1.,
+-    ....:          'B':pd.Timestamp('20130722'),
+-    ....:          'C':pd.Series(1,index=range(4),dtype='float32'),
+-    ....:          'D':np.array([3]*4,dtype='int32'),
+-    ....:          'E':'foo'})
+
+~ Panel
+
+~ Panel4d
+
+~ Panelnd
+
+---------------------------------------------
+# Selection
+~ Selecting by location 
+- df2['column'] # select column
+- df2[x:y] # select rows
+- df2.loc ???
+- df2.loc[x:y,[colA,colB,...]) #loc with row/col label
+- df.iloc[x] (row)
+- df.iloc[x:y,a:b] #iloc using pure number location
+- df2.head(x) # see top x record
+- df2.tail(x) # see bottom x record
+- df2.index
+- df2.columns
+- df2.values
+
+~ Selecting by Boolean Indexing
+- df[df.iloc[:,1]>0]
+- df.dropna(how='any')
+
+---------------------------------------------
+# Operations
+~ Statistics
+- df.mean() # mean by column
+- df.mean(1) # mean by row
+- df.describe()
+- s.value_counts()
+- df2.dtypes
+- df2.describe() # see stats
+- df2.T # transpose
+- df2.sort_index() # axis=0/1;ascending=True/False;
+- df2.sort(columns=x)
+
+~ Apply Function
+- df.apply(np.cumsum)
+- df.apply(lambad x:x.max()-x.min())
+
+~ Merge
+- pd.concat([a],[b],[c])
+- pd.merge(DF1,DF2,on='key')
+
+~ Group
+- df.groupby('ColA','ColB',...).foo()
+
+---------------------------------------------
+# Plot
+~ plot
+- s.plot()
+
+---------------------------------------------
+# O/I
+- df.to_csv(filename)
+- df=pd.read_csv(filename)
+- df.to_excel(filename,sheet)
+

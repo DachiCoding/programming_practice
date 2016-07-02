@@ -1,0 +1,5 @@
+# Makefile
+make ex1 # it must exists
+./ex1	 # run ex1
+CFLAGS="-Wall" make ex1 # show warning 
+

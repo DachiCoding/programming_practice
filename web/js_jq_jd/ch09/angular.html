@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app>
+ <head>
+ </head>
+ <body>
+  <!--Angular Example 1
+  <form>
+  To:<br/>
+  <input ng-model="name" type="text"/><br>
+  MessageL<br>
+  <textarea ng-model="message"></textarea>
+  <input type="submit" value="send message"/>
+  </form>
+  <div class="postcard">
+   <div>{{ name }} </div>
+   <p> {{ message }} </p>
+  </div>
+  -->
+
+  <table ng-controller="BasketCtrl">
+  <tr><td>Item:</td><td>{{description}}</td></tr>
+  <tr><td>Cost:</td><td>{{cost}}</td></tr>
+  <tr><td>Qty:</td><td><input type="number" ng-model="qty"></td></tr>
+  <tr><td>Subtotal:</td><td>{{qty * cost | currency }}</td></tr>
+  </table>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+  <script>
+   function BasketCtrl($scope){
+    $scope.description = 'Single ticket';
+    $scope.cost = 8;
+    $scope.qty = 1;
+   }
+  </script>
+ </body>
+</html>

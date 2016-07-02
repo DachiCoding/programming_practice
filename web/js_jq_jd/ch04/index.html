@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+ <head>
+ </head>
+ <body>
+  <div id="div">
+  </div>
+  
+  <section id="page2">
+   <h1>Bullseye</h1>
+   <img src = "images/teacher.png" id="teacher2" alt="" />
+   <section id="blackboard"></section>
+  </section>
+
+  <script>
+   /*
+   if (3 == '3'){
+    alert('Passed');
+   }
+   */
+
+   /*
+   var artist = 'Rembrandt';
+   var artistA = (artist || 'Unknown');
+   var artistB = ('' || 'Unknown');
+   alert(artistA);
+   alert(artistB);
+   */
+
+   /*
+   var scores = [24,32,17];
+   var arrayLength = scores.length;
+   var roundNumber = 0;
+   var msg = '';
+   var i;
+
+   for(i = 0; i < arrayLength; i++){
+    roundNumber = (i+1);
+    msg += 'Round' + roundNumber + ':';
+    msg += scores[i] + '<br/>';
+   }
+
+   document.getElementById('div').innerHTML = msg;
+   */
+
+   var table = 3;
+   var operator = 'addition';
+   var i = 1;
+   var msg = '';
+
+   if (operator === 'addition'){
+    while (i < 11){
+     msg += i + ' + ' + table + ' = ' + (i + table) + '<br/>';
+     i++;
+    }
+   } else {
+    while (i < 11){
+     msg += i + ' x ' + table + ' = ' + (i * table) + '<br/>';
+     i++;
+    }
+   }
+
+   var el = document.getElementById('blackboard');
+   el.innerHTML = msg;
+
+  </script>
+ </body>
+</html>

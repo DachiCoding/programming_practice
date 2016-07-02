@@ -1,0 +1,62 @@
+//C++ Study Note Dachi Xu
+
+### library:
+
+iostream
+
+iomanip
+ setw
+ setprecision
+
+cstdlib
+ rand
+ srand
+
+ctime
+ time(0)  
+
+### Functions:
+
+Scope:
+ local
+ static
+ global (global indentifier ::)
+
+Pass by Value/Reference
+-Val: void foo(variable)
+-Ref: void foo(&vairable)
+-default: void foo(variable=x)
+-array: when pass array it will ref the array
+
+Overload
+foo(typeA x)
+{
+ expression 1
+}
+
+foo(typeB y)
+{
+ expression 2
+}
+
+Template
+- template <class T>
+- foo(T x)
+
+Vector
+- vector<type> var
+- var.size()
+- size_t (type of size)
+
+Pointer
+- *Ptr * initalize pointer 
+- Ptr=&Var & reference variable
+- Ptr / &Var is address
+- *Ptr is value
+- *&Ptr/&*Ptr is address
+- \0 means end of string
+- array name could be also used as pointers
+- Ptr->instanceFunc()
+
+Sizeof
+- sizeof(var) return bytes occupied of var

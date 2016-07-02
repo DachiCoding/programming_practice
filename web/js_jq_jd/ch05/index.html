@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+ <head>
+  <style>
+   .hot {
+    color:red;
+   }
+
+   .cool {
+    color:blue;
+   }
+
+  </style>
+ </head>
+ <body>
+  <ul>
+   <li id="one" class="hot"><em>fresh</em> figs</li>
+   <li id="two" class="hot">pine nuts</li>
+   <li id="three" class="hot">honey</li>
+   <li id="four" class="hot">balsamic vinegar</li>
+  </ul>
+
+  <script>
+   var el = document.querySelector('li.hot');
+   el.className = 'cool';
+
+   var els = document.querySelectorAll('li.hot');
+   els[1].className = 'cool';
+
+   var firstItem = document.getElementById('one');
+   var itemContent = firstItem.innerHTML;
+   firstItem.innerHTML = '<a href=\"http://www.google.com\">' + itemContent + '</a>';
+   
+   var newLi = document.createElement('li');
+   var newText = document.createTextNode('OMG');
+   newLi.appendChild(newText);
+   var ulElm = document.getElementsByTagName('ul')[0];
+   ulElm.appendChild(newLi);
+
+   var fourthEm = document.getElementById('four');
+   fourthEm.setAttribute('class','cool');
+
+  </script>
+ </body>
+</html>

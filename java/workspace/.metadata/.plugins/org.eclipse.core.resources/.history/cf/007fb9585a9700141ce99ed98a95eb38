@@ -1,0 +1,9 @@
+import java.util.ArrayList;
+
+public class Solution {
+
+    public static ArrayList<String> solve(ArrayList<String> data) {
+        
+    	return null;
+    }
+}

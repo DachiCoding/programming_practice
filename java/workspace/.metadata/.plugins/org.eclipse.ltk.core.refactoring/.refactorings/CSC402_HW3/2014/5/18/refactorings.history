@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CSC402_HW3/balancedAppTest.txt&apos; to &apos;test.txt&apos;" description="Rename resource &apos;balancedAppTest.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="balancedAppTest.txt" name="test.txt" stamp="1398907538275" updateReferences="true"/>
+</session>
