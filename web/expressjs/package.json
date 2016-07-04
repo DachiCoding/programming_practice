@@ -2,6 +2,9 @@
   "name": "hello-world",
   "author": "Dachi Xu",
   "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
   "dependencies": {
     "ejs": "^2.4.2",
     "express": "^4.14.0",

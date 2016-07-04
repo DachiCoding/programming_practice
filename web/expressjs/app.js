@@ -1,48 +1,36 @@
 const express = require("express");
-const http = require("http");
-const logger = require("morgan");
 const path = require("path");
+const fs = require("fs");
 const app = express();
 
-const publicPath = path.resolve(__dirname,"public");
-app.use(express.static(publicPath));
-
-app.set("views", path.resolve(__dirname,"views"));
-app.set("view engine", "ejs");
-
-/*
-app.use(logger("short"));
-
 app.use(function(req,res,next){
-    console.log("In comes a request to: " + req.url);
+    console.log("Request ID: " + req.url);
+    console.log("Request date: " + new Date());
     next();
 });
 
-app.use(function(req,res){
-    res.writeHead(200, {"Content-Type": "text/plain"});
-    res.end("Hello,world!");
-});
-*/
+app.use(function(req,res,next){
+    var filePath = path.join(__dirname,"static",req.url);
+    fs.stat(filePath, function(err, fileInfo){
+        if (err){
+            next();
+            return;
+        }
 
-app.get("/",function(req,res){
-    //res.end("Welcome to my homepage!");
-    res.render("index",{
-        message: "Hey everyone! This is my webpage."
+        if (fileInfo.isFile()){
+            res.sendFile(filePath);
+        } else {
+            next();
+        }
     });
 });
 
-app.get("/about", function(req,res){
-    res.end("Welcome to the about page!");
-});
-
-app.get("/weather",function(req,res){
-    res.end("The current weather is NICE.");
-});
-
 app.use(function(req,res){
-    res.statusCode = 404;
-    res.end("404!");
+    res.status(404);
+    res.send("File not found!");
 });
 
+app.listen(3000,function(){
+    console.log("App started on port 3000");
+});
 
-http.createServer(app).listen(3000);
