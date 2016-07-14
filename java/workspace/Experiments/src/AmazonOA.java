@@ -1,3 +1,4 @@
+/*
 import java.awt.List;
 import java.lang.annotation.Target;
 import java.util.ArrayList;
@@ -291,9 +292,6 @@ public class AmazonOA {
 	}
 	
 	public static ListNode reverseSecondHalf(ListNode head){
-		/*
-		 * Find the mid point 
-		 * */
 		if(head == null) return head;
 		ListNode curr = head;
 		
@@ -319,11 +317,9 @@ public class AmazonOA {
 	}
 	
 	public static ListNode reverseSecondHalf2(ListNode head){
-		/*
-		 * Step 1: use two pointers to move to the mid point
-		 * Step 2: use three pointers to swap adjacent nodes
-		 * */
-		
+		 // Step 1: use two pointers to move to the mid point
+		 // Step 2: use three pointers to swap adjacent nodes
+
 		if(head == null || head.next == null || head.next.next == null) return head;
 		ListNode fast = head.next;
 		ListNode slow = head;
@@ -885,3 +881,4 @@ public class AmazonOA {
  		reverseSecondHalfTest();
 	}	
 }
+*/
