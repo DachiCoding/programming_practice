@@ -1,0 +1,71 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt,tikz,border=1]{standalone}
+\usetikzlibrary{calc,positioning}
+\usepackage{pgfplots}
+
+\usepackage[default,mdseries=Light,bfseries=Medium,path=../fonts]{cjkfonts}
+\input{../westernfonts}
+\input{../plots}
+
+\begin{document}
+  
+  \begin{tikzpicture}
+
+    \begin{axis}[
+        xlabel={\normalsize $x$},
+        axis lines=left,
+        tick label style={font=\tiny},
+        label style={font=\tiny},
+        title style={font=\scriptsize},
+        legend style={font=\tiny},
+        xtick distance=1,
+        ytick distance=1,
+        xtick={0,1},
+        ytick={1},
+        xmax=1.05,
+        ymax=1.05,
+        legend entries={$w=6,b=-3$\\$w=25,b=-3$\\$w=50,b=-3$\\$w=100,b=-3$\\},
+        legend style={          at={(0.8,0.5)},          anchor=west        },
+        title={顶部隐藏神经元的输出},
+        declare function={
+          f(\x,\w,\b) = 1/(1 + exp(-(\w * \x + (\b)))) + 0.2 * sin(10 * deg(\w * \x + (\b))) * exp(-abs(\w * \x + (\b)));
+        }
+      ]
+      \addplot[
+        gray,
+        thick,
+        dotted,
+        domain=0:1,
+        samples=201
+      ] {
+        f(x, 6, -3)
+      };
+      \addplot[
+        orange!40!gray,
+        domain=0:1,
+        samples=401
+      ] {
+        f(x, 25, -3)
+      };
+      \addplot[
+        orange!80,
+        domain=0:1,
+        samples=401
+      ] {
+        f(x, 50, -3)
+      };
+      \addplot[
+        orange,
+        thick,
+        domain=0:1,
+        samples=401
+      ] {
+        f(x, 100, -3)
+      };
+    \end{axis}
+    
+  \end{tikzpicture}
+  
+\end{document}

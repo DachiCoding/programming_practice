@@ -1,0 +1,14 @@
+.texpadtmp
+auto
+/fonts/
+
+*.log
+*.aux
+*.out
+*.toc
+*.lb
+*.idx
+*.ind
+*.ilg
+*.pdf
+*.DS_Store

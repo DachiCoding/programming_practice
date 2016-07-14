@@ -1,0 +1,1031 @@
+% file: plots.tex
+
+% The following 2 macros are used for plotting learning curve in chapter 3:
+
+% learn cost curve of a single sigmoid neutron with quadratic cost function
+\newcommand{\quadraticCostLearning}[4]{
+  \begin{tikzpicture}[
+    inner sep=0pt,
+    minimum size=10mm,
+    font=\footnotesize,
+    background rectangle/.style={
+      draw=gray!25,
+      fill=gray!10,
+      rounded corners
+    },
+    show background rectangle]
+
+    \coordinate (origin) at (0,0);
+    \coordinate(x) at (3.5,0);
+    \coordinate(y) at (0,2.5);
+
+    \node(i) [above=4 of origin,xshift=-5mm] {Input: $1.0$};
+    \node(n) [right=2 of i,circle,draw] {};
+    \node(epoch) [right=of x,xshift=-1cm] {Epoch};
+    \node(cost) [left=of y,xshift=1cm] {Cost};
+
+    \draw[->] (origin) to (x);
+    \draw[->] (origin) to (y);
+
+    %\draw[blue,thick,domain=0:2] plot (\x, {(\x*\x / 2)});
+
+    \tikzmath{                  % Do not contain blank line
+      function sigmoid(\z) {
+        return 1/(1 + exp(- \z));
+      };
+      function sigmoid_neutron(\w,\b) {
+        return sigmoid(\w + \b);
+      };
+      function quad_cost(\a) {         % the quadratic cost function
+        return (\a * \a)/2;
+      };
+      function quad_cost_derivative(\a) {
+        return \a * \a * (1-\a);
+      };
+      \w = #1;                % start weight
+      \b = #2;                % start bias
+      \e = #3;                % eta, learning rate
+      \y = 0;
+      \a = sigmoid_neutron(\w,\b);
+      \dt = quad_cost_derivative(\a);
+      \xo = 0;
+      \yo = quad_cost(\a);
+      integer \x;
+      if #4 > 0 then {
+        for \x in {1,...,#4}{  % epoches
+          \a = sigmoid_neutron(\w,\b);
+          \dt = quad_cost_derivative(\a);
+          \w = \w - \e * \dt;
+          \b = \b - \e * \dt;
+          \y = quad_cost(\a);
+          {\draw[blue,thick] (\xo/100,\yo*5) -- (\x/100,\y*5);}; % scale y with 5 times
+          \xo = \xo + 1;
+          \yo = \y;
+        };
+        {\draw (\x/100,0) -- node[below] {$\x$} (\x/100,-0.1);};
+      };
+      {
+        \draw[->] (i) to node (w) [below] {
+          \scriptsize
+          \pgfkeys{/pgf/number format/.cd,showpos,fixed,fixed zerofill,precision=2,use period}
+          $w = \pgfmathprintnumber{\w}$
+        } (n);
+        \node(b) [below,xshift=5mm] at (n.south) {
+          \scriptsize
+          \pgfkeys{/pgf/number format/.cd,showpos,fixed,fixed zerofill,precision=2,use period}
+          $b = \pgfmathprintnumber{\b}$
+        };
+        \node(o) [right=of n] {
+          \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+          Output: $\pgfmathprintnumber{\a}$
+        };
+        \draw[->] (n) to (o);
+      };
+    }
+
+  \end{tikzpicture}%
+}
+
+% learn cost curve of a single sigmoid neutron with cross entropy cost function
+\newcommand{\crossEntropyCostLearning}[4]{
+  \begin{tikzpicture}[
+    inner sep=0pt,
+    minimum size=10mm,
+    font=\footnotesize,
+    background rectangle/.style={
+      draw=gray!25,
+      fill=gray!10,
+      rounded corners
+    },
+    show background rectangle]
+
+    \coordinate (origin) at (0,0);
+    \coordinate(x) at (3.5,0);
+    \coordinate(y) at (0,2.5);
+
+    \node(i) [above=4 of origin,xshift=-5mm] {Input: $1.0$};
+    \node(n) [right=2 of i,circle,draw] {};
+    \node(epoch) [right=of x,xshift=-1cm] {Epoch};
+    \node(cost) [left=of y,xshift=1cm] {Cost};
+
+    \draw[->] (origin) to (x);
+    \draw[->] (origin) to (y);
+
+    %\draw[blue,thick,domain=0:2] plot (\x, {(\x*\x / 2)});
+
+    \tikzmath{                  % Do not contain blank line
+      function sigmoid(\z) {
+        return 1/(1 + exp(- \z));
+      };
+      function sigmoid_neutron(\w,\b) {
+        return sigmoid(\w + \b);
+      };
+      function cross_entropy_cost(\a) {         % the quadratic cost function
+        return -ln(1 - \a);
+      };
+      function cross_entropy_cost_derivative(\a) {
+        return 1/(1 - \a);
+      };
+      \w = #1;                % start weight
+      \b = #2;                % start bias
+      \e = #3;                % eta, learning rate
+      \y = 0;
+      \a = sigmoid_neutron(\w,\b);
+      \dt = cross_entropy_cost_derivative(\a);
+      \xo = 0;
+      \yo = cross_entropy_cost(\a);
+      integer \x;
+      if #4 > 0 then {
+        for \x in {1,...,#4}{  % epoches
+          \a = sigmoid_neutron(\w,\b);
+          \dt = cross_entropy_cost_derivative(\a);
+          \w = \w - \e * \dt;
+          \b = \b - \e * \dt;
+          \y = cross_entropy_cost(\a);
+          {\draw[blue,thick] (\xo/100,\yo/2) -- (\x/100,\y/2);}; % scale y to 1/2
+          \xo = \xo + 1;
+          \yo = \y;
+        };
+        {\draw (\x/100,0) -- node[below] {\footnotesize $\x$} (\x/100,-0.1);};
+      };
+      {
+        \draw[->] (i) to node (w) [below] {
+          \scriptsize
+          \pgfkeys{/pgf/number format/.cd,showpos,fixed,fixed zerofill,precision=2,use period}
+          $w = \pgfmathprintnumber{\w}$
+        } (n);
+        \node(b) [below,xshift=5mm] at (n.south) {
+          \scriptsize
+          \pgfkeys{/pgf/number format/.cd,showpos,fixed,fixed zerofill,precision=2,use period}
+          $b = \pgfmathprintnumber{\b}$
+        };
+        \node(o) [right=of n] {
+          \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+          Output: $\pgfmathprintnumber{\a}$
+        };
+        \draw[->] (n) to (o);
+      };
+    }
+
+  \end{tikzpicture}%
+}
+
+% #1 - z1
+% #2 - z2
+% #3 - z3
+% #4 - z4
+\newcommand{\manipulateSoftmaxBars}[4]{
+  \begin{tikzpicture}[
+    font=\footnotesize,
+    base/.style={rectangle,draw,minimum width=100pt,minimum height=10pt},
+    slidebar/.style={base,rounded corners=2pt},
+    slidebarinner/.style={rectangle,fill=gray!50,rounded corners=2pt,minimum height=10pt},
+    colorbar/.style={base},
+    colorbarinner/.style={rectangle,minimum height=10pt,fill=blue!60!cyan}
+  ]
+
+  \node(s1) [slidebar] {};
+  \node(z1) [below,anchor=north west] at (s1.south west) {$z^L_1 = #1$};
+
+  \node(b1) [colorbar,right=of s1] {};
+  %\node(a1) [below,anchor=north west] at (b1.south west) {$a^L_1 = 0.315$};
+
+  \node(s2) [slidebar,below=of s1] {};
+  \node(z2) [below,anchor=north west] at (s2.south west) {$z^L_2 = #2$};
+
+  \node(b2) [colorbar,right=of s2] {};
+  %\node(a2) [below,anchor=north west] at (b2.south west) {$a^L_2 = 0.009$};
+
+  \node(s3) [slidebar,below=of s2] {};
+  \node(z3) [below,anchor=north west] at (s3.south west) {$z^L_3 = #3$};
+
+  \node(b3) [colorbar,right=of s3] {};
+  %\node(a3) [below,anchor=north west] at (b3.south west) {$a^L_3 = 0.633$};
+
+  \node(s4) [slidebar,below=of s3] {};
+  \node(z4) [below,anchor=north west] at (s4.south west) {$z^L_4 = #4$};
+
+  \node(b4) [colorbar,right=of s4] {};
+  %\node(a4) [below,anchor=north west] at (b4.south west) {$a^L_4 = 0.043$};
+
+	\tikzmath{
+		function zsum(\za,\zb,\zc,\zd) {
+    		return exp(\za) + exp(\zb) + exp(\zc) + exp(\zd);
+		};
+		function softmax(\n, \za, \zb, \zc, \zd) {
+			return exp(\n) / zsum (\za, \zb, \zc, \zd);
+		};
+		function getslidewidth(\x) {
+			return (\x + 5) * 10; 
+		};
+		\a = softmax(#1, #1, #2, #3, #4);
+	  	\wa = \a * 100;
+	  	\wz = getslidewidth(#1);
+	  	{
+  			\node(si1) [slidebarinner,minimum width=\wz pt,anchor=west] at (s1.west) {};
+	  		\node(bi1) [colorbarinner,right=of s1,minimum width=\wa pt] {};
+			\node(a1) [below,anchor=north west] at (b1.south west) {$a^L_1 = \a$};
+	  	};
+		\a = softmax(#2, #1, #2, #3, #4);
+	  	\wa = \a * 100;
+	  	\wz = getslidewidth(#2);
+		{
+  			\node(si2) [slidebarinner,minimum width=\wz pt,anchor=west] at (s2.west) {};
+	  		\node(bi2) [colorbarinner,right=of s2,minimum width=\wa pt] {};
+			\node(a2) [below,anchor=north west] at (b2.south west) {$a^L_2 = \a$};
+		};
+		\a = softmax(#3, #1, #2, #3, #4);
+	  	\wa = \a * 100;
+	  	\wz = getslidewidth(#3);
+  		{
+  			\node(si3) [slidebarinner,minimum width=\wz pt,anchor=west] at (s3.west) {};
+	  		\node(bi3) [colorbarinner,right=of s3,minimum width=\wa pt] {};
+  			\node(a3) [below,anchor=north west] at (b3.south west) {$a^L_3 = \a$};
+  		};
+		\a = softmax(#4, #1, #2, #3, #4);
+	  	\wa = \a * 100;
+	  	\wz = getslidewidth(#4);
+  		{
+  			\node(si4) [slidebarinner,minimum width=\wz pt,anchor=west] at (s4.west) {};
+	  		\node(bi4) [colorbarinner,right=of s4,minimum width=\wa pt] {};
+  			\node(a4) [below,anchor=north west] at (b4.south west) {$a^L_4 = \a$};
+  		};
+	}
+
+  \end{tikzpicture}%
+}
+
+% draw neurons and plots in chapter 4.
+
+% #1 - x weight
+% #2 - bias
+\newcommand{\manipulateTiGraph}[2]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+    
+    \begin{scope}
+      \node(n) [neuron] {};
+      \node(x) [neuron,left=1.25 of n,yshift=1.5cm] {$x$};
+      \node(y) [neuron,left=1.25 of n,yshift=-1.5cm] {$y$};
+    
+      \draw[->] (x) -- node [blue,yshift=2mm,xshift=2mm] {$#1$} (n);
+      \draw[->] (y) -- node [yshift=-2mm,xshift=2mm] {$0$} (n);
+  
+      \node [above,blue] at (n.north) {$#2$};
+      \draw[->] (n) -- ++(1cm, 0);
+    \end{scope}
+    
+    \begin{scope}[xshift=2cm,yshift=-2.5cm]    
+      \begin{axis}[
+        view={-30}{15},        
+        axis background/.style={fill=blue!5},
+        xlabel=$x$,
+        ylabel=$y$,
+        xtick distance=1,
+        ytick distance=1,
+        ztick distance=1,
+        xtick={1},
+        ytick={1},
+        ztick={2},
+        title=Output,
+        colormap={simple}{rgb255=(235,95,95) rgb255=(255,155,145)}
+        ]
+        \addplot3[surf,domain=0:1] {
+          1 / (1 + exp(-(#1) * x - (#2)))
+        };
+      \end{axis}
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+% #1 - x weight
+% #2 - bias
+\newcommand{\createTiGraphSurf}[2]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+    
+      \begin{axis}[
+        view={-30}{15},        
+        axis background/.style={fill=blue!5},
+        xlabel=$x$,
+        ylabel=$y$,
+        xtick distance=1,
+        ytick distance=1,
+        ztick distance=1,
+        xtick={1},
+        ytick={1},
+        ztick={2},
+        title={Output ($w_1 = #1, b = #2$)},
+        colormap={simple}{rgb255=(235,95,95) rgb255=(255,155,145)}
+        ]
+        \addplot3[surf,domain=0:1] {
+          1 / (1 + exp(-(#1) * x - (#2)))
+        };
+      \end{axis}
+    
+  \end{tikzpicture}%
+}
+
+% #1 - weight
+% #2 - bias
+% #3 - title
+\newcommand{\manipulateSingleHiddenNeuron}[3]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+
+    \begin{scope}
+      
+      \node (l0) [neuron] {$x$};
+      \node (m0) [neuron,right=of l0,yshift=-1.5cm] {};
+      \node (m1) [neuron,right=of l0,yshift=1.5cm] {};
+      \node (r0) [neuron,right=of m0,yshift=1.5cm] {};
+
+      \draw[->] (r0) -- ++(1,0);
+
+      \draw[->] (l0) to (m0);
+      \draw[->] (l0) to node (w) [blue,above,xshift=-0.5cm] {$w = #1$} (m1);
+      \draw[->] (m0) to (r0);
+      \draw[->] (m1) to (r0);
+
+      \node(b) [blue,above] at (m1.north) {$b = #2$};
+    \end{scope}
+
+    \begin{scope}[xshift=6cm]
+
+      \begin{axis}[
+          width=5.6cm,
+          height=5.6cm,
+          xlabel={\normalsize $x$},
+          axis lines=left,
+          tick label style={font=\tiny},
+          label style={font=\tiny},
+          title style={font=\scriptsize},
+          xtick distance=1,
+          ytick distance=1,
+          xmax=1.1,
+          ymax=1.1,
+          title={#3}
+        ]
+        \addplot[
+          orange,
+          thick,
+          domain=0:1,
+          samples=101
+        ] {
+          1/(1 + exp(-(#1 * x + #2)))        
+        };
+      \end{axis}
+
+      % \coordinate(o) at(0,0) node [left,xshift=1mm,yshift=-1mm] {\scriptsize $0$};
+      %
+      % \draw[->] (o) -- ++(3.75,0);
+      % \draw[->] (o) -- ++(0,3.75);
+      % \coordinate[right=3.5 of o] (cx);
+      % \coordinate[above=3.5 of o] (cy);
+      % \draw (cx) -- ++(0, -0.075) node[below,yshift=1mm] {\scriptsize 1};
+      % \draw (cy) -- ++(-0.075, 0) node[left,xshift=1mm] {\scriptsize 1};
+      %
+      % \node [below] at (1.75,0) {$x$};
+      % \node [above] at (1.75,3.5) {#3};
+      %
+      % \draw[orange,domain=0:1,samples=101,xscale=3.5,yscale=3.5]
+      %   plot (\x, {(1/(1 + exp(-(#1 * \x + #2))))});
+      
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+% This macro generate images by two_hn_network.tex, bump_function.tex in images folder,
+% to generate images used in chapter 4.
+% #1 - s1
+% #2 - w1
+% #3 - s2
+% #4 - w2
+\newcommand{\manipulateTwoHNNetwork}[4]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+
+    \begin{scope}
+      \node (l0) [neuron] {$x$};
+      \node (m0) [neuron,right=of l0,yshift=-1.5cm] {};
+      \node (m1) [neuron,right=of l0,yshift=1.5cm] {};
+      \node (r0) [neuron,right=of m0,yshift=1.5cm] {};
+
+      \draw[->] (r0) -- ++(1,0);
+
+      \draw[->] (l0) to (m0);
+      \draw[->] (l0) to (m1);
+      \draw[->] (m0) to node [blue,xshift=5mm,yshift=-4mm] {$w_2 = #4$} (r0);
+      \draw[->] (m1) to node [blue,xshift=5mm,yshift=4mm] {$w_1 = #2$} (r0);
+
+      \node[blue,above] at (m1.north) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $s_1 = \pgfmathprintnumber{#1}$
+      };
+      \node[blue,above] at (m0.north) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $s_2 = \pgfmathprintnumber{#3}$
+      };
+    \end{scope}
+
+    \begin{scope}[xshift=6cm,yshift=-2.45cm]
+
+      \begin{axis}[
+          width=5.6cm,
+          height=7.6cm,
+%          xlabel={\normalsize $x$},
+          tick label style={font=\tiny},
+          label style={font=\tiny},
+          title style={font=\scriptsize},
+          axis x line=middle,
+          axis y line=left,
+          xtick distance=1,
+          ytick distance=1,
+          xmax=1.1,
+          ymin=-1.5,
+          ymax=2.1,
+          title={隐藏层的加权输出},
+          declare function={
+           sigma(\z) = 1/(1 + exp(-\z));
+           f(\x,\st,\wt,\sb,\wb) = \wt * sigma(\x * 1000 - 1000 * \st) + \wb * sigma(\x * 1000 - 1000 * \sb);
+           % f = w1 * a1 + w2 * a2
+          }
+        ]
+        \addplot[
+          orange,
+          thick,
+          domain=0:1,
+          samples=401
+        ] {
+          f(x, #1, #2, #3, #4)
+        };
+      \end{axis}
+      
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+% This macro generate bump function by bump_fn.tex in images folder,
+% to generate images used in chapter 4.
+% #1 - s1
+% #2 - s2
+% #3 - h
+\newcommand{\manipulateBumpFunction}[3]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+
+    \begin{scope}
+      \node (l0) [neuron] {$x$};
+      \node (m0) [neuron,right=of l0,yshift=-1.5cm] {};
+      \node (m1) [neuron,right=of l0,yshift=1.5cm] {};
+      \node (r0) [neuron,right=of m0,yshift=1.5cm] {};
+
+      \draw[->] (r0) -- ++(1,0);
+
+      \draw[->] (l0) to (m0);
+      \draw[->] (l0) to (m1);
+      \draw[->] (m0) to node [xshift=2mm,yshift=-2mm] {$-#3$} (r0);
+      \draw[->] (m1) to node [xshift=2mm,yshift=2mm] {$#3$} (r0);
+
+      \node[blue] at (m1.center) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $\pgfmathprintnumber{#1}$
+      };
+      \node[blue] at (m0.center) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $\pgfmathprintnumber{#2}$
+      };
+      
+      \node [blue,right=0.6cm of m1, yshift=4mm] {$h = #3$};
+
+    \end{scope}
+
+    \begin{scope}[xshift=6cm,yshift=-2.45cm]
+
+      \begin{axis}[
+          width=5.6cm,
+          height=7.6cm,
+%          xlabel={\normalsize $x$},
+          tick label style={font=\tiny},
+          label style={font=\tiny},
+          title style={font=\scriptsize},
+          axis x line=middle,
+          axis y line=left,
+          xtick distance=1,
+          ytick distance=1,
+          xmax=1.1,
+          ymin=-1.5,
+          ymax=2.1,
+          title={隐藏层的加权输出},
+          declare function={
+           sigma(\z) = 1/(1 + exp(-\z));
+           f(\x,\st,\wt,\sb,\wb) = \wt * sigma(\x * 1000 - 1000 * \st) + \wb * sigma(\x * 1000 - 1000 * \sb);
+           % f = w1 * a1 + w2 * a2
+          }
+        ]
+        \addplot[
+          orange,
+          thick,
+          domain=0:1,
+          samples=401
+        ] {
+          f(x, #1, #3, #2, -#3)
+        };
+      \end{axis}
+      
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+% This macro generate bump function by double_bump.tex in images folder,
+% to generate images used in chapter 4.
+% #1 - s1
+% #2 - s2
+% #3 - h1
+% #4 - s3
+% #5 - s4
+% #6 - h2
+\newcommand{\manipulateDoubleBump}[6]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+
+    \begin{scope}
+      \node (l0) [neuron] {$x$};
+      \node (s2) [neuron,right=of l0,yshift=1.2cm] {};
+      \node (s3) [neuron,right=of l0,yshift=-1.2cm] {};
+      \node (s1) [neuron,above] at (s2.north) {};
+      \node (s4) [neuron,below] at (s3.south) {};
+      
+      \node (r0) [neuron,right=of s2,yshift=-1.2cm] {};
+
+      \draw[->] (r0) -- ++(1,0);
+
+      \draw[->] (l0) to (s1);
+      \draw[->] (l0) to (s2);
+      \draw[->] (l0) to (s3);
+      \draw[->] (l0) to (s4);
+      \draw[->] (s1) to node [blue,xshift=8mm,yshift=2mm] {$h = #3$} (r0);
+      \draw[->] (s2) to (r0);
+      \draw[->] (s3) to (r0);
+      \draw[->] (s4) to node [blue,xshift=8mm,yshift=-2mm] {$h = #6$} (r0);
+
+      \node[blue] at (s1.center) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $\pgfmathprintnumber{#1}$
+      };
+      \node[blue] at (s2.center) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $\pgfmathprintnumber{#2}$
+      };
+      \node[blue] at (s3.center) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $\pgfmathprintnumber{#4}$
+      };
+      \node[blue] at (s4.center) {
+        \pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2,use period}
+        $\pgfmathprintnumber{#5}$
+      };
+      
+    \end{scope}
+
+    \begin{scope}[xshift=6cm,yshift=-2.45cm]
+
+      \begin{axis}[
+          width=5.6cm,
+          height=7.6cm,
+%          xlabel={\normalsize $x$},
+          tick label style={font=\tiny},
+          label style={font=\tiny},
+          title style={font=\scriptsize},
+          axis x line=middle,
+          axis y line=left,
+          xtick distance=1,
+          ytick distance=1,
+          xmax=1.1,
+          ymin=-1.5,
+          ymax=2.1,
+          title={隐藏层的加权输出},
+          declare function={
+           sigma(\z) = 1/(1 + exp(-\z));
+           f(\x,\st,\wt,\sb,\wb) = \wt * sigma(\x * 1000 - 1000 * \st) + \wb * sigma(\x * 1000 - 1000 * \sb);
+           % f = w1 * a1 + w2 * a2
+          }
+        ]
+        \addplot[
+          orange,
+          thick,
+          domain=0:1,
+          samples=401
+        ] {
+          f(x, #1, #3, #2, -#3) + f(x, #4, #6, #5, -#6)
+        };
+      \end{axis}
+      
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+\newcommand{\manipulateFiveBumps}[5]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+
+    \begin{scope}
+      
+      \node (l0) [neuron] {$x$};
+      \node (m0g0) [neuron,right=1.5 of l0,yshift=-5.5mm] {$0.6$};
+      \node (m1g0) [neuron,right=1.5 of l0,yshift=5.5mm] {$0.4$};
+      \node (r0) [neuron,right=1.5 of m0g0,yshift=5.5mm] {};
+
+      \node (m0g1) [neuron,above=0.4 of m1g0] {$0.4$};
+      \node (m1g1) [neuron,above=1mm] at (m0g1.north) {$0.2$};
+
+      \node (m1g2) [neuron,below=0.4 of m0g0] {$0.6$};
+      \node (m0g2) [neuron,below=1mm] at (m1g2.south) {$0.8$};
+
+      \node (m0g3) [circle,inner sep=0pt,minimum size=10mm,above=0.4 of m1g1] {$0.2$};
+      \node (m1g3) [neuron,above=1mm] at (m0g3.north) {$0.0$};
+
+      \node (m1g4) [circle,inner sep=0pt,minimum size=10mm,below=0.4 of m0g2] {$0.8$};
+      \node (m0g4) [neuron,below=1mm] at (m1g4.south) {$1.0$};
+
+      \foreach \x in {0,1}
+        \foreach \y in {0,...,4} {
+          \draw[->] (l0) to (m\x g\y);
+          \draw[->] (m\x g\y) to (r0);
+      }
+
+			% cover the top and bottom neutrons for better look
+			\node (m0g3a) [neuron,fill=white] at (m0g3) {$0.2$};
+			\node (m1g4a) [neuron,fill=white] at (m1g4) {$0.8$};
+
+      \draw[->] (r0) -- ++(1,0);
+
+      \draw[->] (l0) to (m0g0);
+      \draw[->] (l0) to (m1g0);
+      \draw[->] (m0g0) to (r0);
+      \draw[->] (m1g0) to (r0);
+
+      \node [blue,above=4.15cm of r0,xshift=-1cm] {$h = #1$};
+      \node [blue,above=1.7cm of r0,xshift=-3mm] {$h = #2$};
+      \node [blue,above,xshift=5mm] at (r0.north) {$h = #3$};
+      \node [blue,below=1.7cm of r0,xshift=-3mm] {$h = #4$};
+      \node [blue,below=4.15cm of r0,xshift=-1cm] {$h = #5$};
+
+    \end{scope}
+
+    \begin{scope}[xshift=7cm]
+
+      \begin{axis}[
+          width=5.6cm,
+          height=7.6cm,
+%          xlabel={\normalsize $x$},
+          tick label style={font=\tiny},
+          label style={font=\tiny},
+          title style={font=\scriptsize},
+          axis x line=middle,
+          axis y line=left,
+          xtick distance=1,
+          ytick distance=1,
+          xmax=1.1,
+          ymin=-1.95,
+          ymax=2.1,
+          title={隐藏层的加权输出},
+          declare function={
+           sigma(\z) = 1/(1 + exp(-\z));
+           f(\x,\st,\wt,\sb,\wb) = \wt * sigma(\x * 1000 - 1000 * \st) + \wb * sigma(\x * 1000 - 1000 * \sb);
+           % f = w1 * a1 + w2 * a2
+          }
+        ]
+        \addplot[
+          orange,
+          thick,
+          domain=0:1,
+          samples=401
+        ] {
+          f(x, 0.0, #1, 0.2, -#1) + 
+          f(x, 0.2, #2, 0.4, -#2) + 
+          f(x, 0.2, #3, 0.6, -#3) + 
+          f(x, 0.6, #4, 0.8, -#4) + 
+          f(x, 0.8, #5, 1.0, -#5)          
+        };
+      \end{axis}
+      
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+\newcommand{\manipulateDesignFunction}[5]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+
+    \begin{scope}
+      
+      \node (l0) [neuron] {$x$};
+      \node (m0g0) [neuron,right=1.5 of l0,yshift=-5.5mm] {$0.6$};
+      \node (m1g0) [neuron,right=1.5 of l0,yshift=5.5mm] {$0.4$};
+      \node (r0) [neuron,right=1.5 of m0g0,yshift=5.5mm] {};
+
+      \node (m0g1) [neuron,above=0.4 of m1g0] {$0.4$};
+      \node (m1g1) [neuron,above=1mm] at (m0g1.north) {$0.2$};
+
+      \node (m1g2) [neuron,below=0.4 of m0g0] {$0.6$};
+      \node (m0g2) [neuron,below=1mm] at (m1g2.south) {$0.8$};
+
+      \node (m0g3) [circle,inner sep=0pt,minimum size=10mm,above=0.4 of m1g1] {$0.2$};
+      \node (m1g3) [neuron,above=1mm] at (m0g3.north) {$0.0$};
+
+      \node (m1g4) [circle,inner sep=0pt,minimum size=10mm,below=0.4 of m0g2] {$0.8$};
+      \node (m0g4) [neuron,below=1mm] at (m1g4.south) {$1.0$};
+
+      \foreach \x in {0,1}
+        \foreach \y in {0,...,4} {
+          \draw[->] (l0) to (m\x g\y);
+          \draw[->] (m\x g\y) to (r0);
+      }
+
+			% cover the top and bottom neutrons for better look
+			\node (m0g3a) [neuron,fill=white] at (m0g3) {$0.2$};
+			\node (m1g4a) [neuron,fill=white] at (m1g4) {$0.8$};
+
+      \draw[->] (r0) -- ++(1,0);
+
+      \draw[->] (l0) to (m0g0);
+      \draw[->] (l0) to (m1g0);
+      \draw[->] (m0g0) to (r0);
+      \draw[->] (m1g0) to (r0);
+
+      \node [blue,above=4.15cm of r0,xshift=-1cm] {$h = #1$};
+      \node [blue,above=1.7cm of r0,xshift=-3mm] {$h = #2$};
+      \node [blue,above,xshift=5mm] at (r0.north) {$h = #3$};
+      \node [blue,below=1.7cm of r0,xshift=-3mm] {$h = #4$};
+      \node [blue,below=4.15cm of r0,xshift=-1cm] {$h = #5$};
+
+    \end{scope}
+
+    \begin{scope}[xshift=7cm]
+
+      \begin{axis}[
+          width=5.6cm,
+          height=7.6cm,
+%          xlabel={\normalsize $x$},
+          tick label style={font=\tiny},
+          label style={font=\tiny},
+          title style={font=\scriptsize},
+          axis x line=middle,
+          axis y line=left,
+          xtick distance=1,
+          ytick distance=1,
+          xmax=1.1,
+          ymin=-2.6,
+          ymax=3.1,
+          title={隐藏层的加权输出},
+          declare function={
+           sigma(\z) = 1/(1 + exp(-\z));
+           f(\x,\st,\wt,\sb,\wb) = \wt * sigma(\x * 1000 - 1000 * \st) + \wb * sigma(\x * 1000 - 1000 * \sb);
+           % f = w1 * a1 + w2 * a2
+           sigmaInverse(\z)=ln(\z/(1-\z));
+           g(\x)=0.2+0.4*\x*\x+0.3*\x*sin(15*deg(\x))+0.05*cos(50*deg(\x));
+          }
+        ]
+        \addplot[
+          orange,
+          thick,
+          domain=0:1,
+          samples=501
+        ] {
+          f(x, 0.0, #1, 0.2, -#1) + 
+          f(x, 0.2, #2, 0.4, -#2) + 
+          f(x, 0.2, #3, 0.6, -#3) + 
+          f(x, 0.6, #4, 0.8, -#4) + 
+          f(x, 0.8, #5, 1.0, -#5)          
+        };
+        \addplot[
+          blue!50,
+          domain=0:1,
+          samples=101
+        ] {
+          sigmaInverse(g(x))
+        };
+      \end{axis}
+      
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+% #1 - weight
+% #2 - bias
+\newcommand{\manipulateRamping}[2]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+
+    \begin{scope}
+      \node(x) [neuron] {$x$};
+      \node(n) [neuron,right=2 of x] {};
+      \draw[->] (n) -- ++(1,0);
+      \draw[->] (x) to node (w) [blue,above] {$w = #1$} (n);
+      \node(b) [blue,above] at (n.north) {$b = #2$};
+    \end{scope}
+
+    \begin{scope}[xshift=5cm,yshift=-2cm]
+
+      \begin{axis}[
+          width=6.1cm,
+          height=6.1cm,
+          xlabel={\normalsize $x$},
+          axis lines=left,
+          tick label style={font=\tiny},
+          label style={font=\tiny},
+          title style={font=\scriptsize},
+          xtick={0,1},
+          ytick={1},
+          xmax=1.1,
+          ymax=1.1,
+          % minor tick num=1,
+          title={顶部隐藏神经元的输出},
+          declare function={
+            f(\x,\w,\b) = 1/(1 + exp(-(\w * \x + (\b)))) + 0.2 * sin(10 * deg(\w * \x + (\b))) * exp(-abs(\w * \x + (\b)));
+          }
+        ]
+        \addplot[
+          orange,
+          thick,
+          domain=0:1,
+          samples=201
+        ] {
+          f(x, #1, #2)
+        };
+      \end{axis}
+      
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+% #1 - h
+% #2 - b
+\newcommand{\manipulateTowerConstruction}[2]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,inner sep=0pt,minimum size=10mm}
+    ]
+    
+    \begin{scope}
+      \node(n) [neuron] {};
+      
+      \node(h0) [neuron,left=of n,yshift=1.2cm] {};
+      \node(h1) [neuron,above] at (h0.north) {};
+      \node(h2) [neuron,left=of n,yshift=-1.2cm] {};
+      \node(h3) [neuron,below] at (h2.south) {};
+      
+      \node(x) [neuron,left=of h0,yshift=5mm] {$x$};
+      \node(y) [neuron,left=of h2,yshift=-5mm] {$y$};
+    
+      \draw[->] (x) to (h0);
+      \draw[->] (x) to (h1);
+      \draw[->] (y) to (h2);
+      \draw[->] (y) to (h3);
+  
+      \node (s0) at (h0.center) {$0.60$};
+      \node at (s0.north) {\tiny $x$};
+      \node (s1) at (h1.center) {$0.40$};
+      \node at (s1.north) {\tiny $x$};
+      \node (s2) at (h2.center) {$0.30$};
+      \node at (s2.north) {\tiny $y$};
+      \node (s3) at (h3.center) {$0.70$};
+      \node at (s3.north) {\tiny $y$};
+      
+      \node [blue,right=4mm of h1] {$h = #1$};
+      \node [blue,above,yshift=2mm,xshift=2mm] at (n.north) {$b = #2$};
+
+      \draw[->] (h0) -- node [yshift=-2mm] {\scriptsize $-#1$} (n);
+      \draw[->] (h1) -- node [yshift=2mm] {\scriptsize $#1$} (n);
+      \draw[->] (h2) -- node [yshift=2mm] {\scriptsize $#1$} (n);
+      \draw[->] (h3) -- node [yshift=-2mm] {\scriptsize $-#1$} (n);
+      
+      \draw[->] (n) -- ++(1cm, 0);
+    \end{scope}
+    
+    \begin{scope}[xshift=2cm,yshift=-2.5cm]    
+      % FIXME: rotate the zlabel, change plot color, and move z axis to right
+      \begin{axis}[
+        view={-30}{15},        
+        axis background/.style={fill=blue!5},
+        xlabel=$x$,
+        ylabel=$y$,
+        xtick distance=1,
+        ytick distance=1,
+        ztick distance=1,
+        xtick={1},
+        ytick={1},
+        ztick={2},
+        zmin=0,
+        zmax=1,
+        title=Output,
+        colormap={simple}{rgb255=(235,95,95) rgb255=(255,155,145)},
+        declare function={
+          sigma(\z)=1/(1 + exp(-\z));
+ 		      f(\x,\y,\h,\b)=sigma(\b + \h * (sigma(1000 * (\x - 0.4)) - sigma(1000 * (\x - 0.6)))	+ \h * (sigma(1000 * (\y - 0.3)) - sigma(1000 * (\y - 0.7))));
+     	  % f(x,y) = sigma(b + h * (sigma(1000*(x-0.4))-sigma(1000*(x-0.6))) + h*(sigma(1000*(y-0.3))-sigma(1000*(y-0.7))));
+        }]
+        \addplot3[surf,domain=0:1] {
+          f(x,y, #1, #2)
+        };
+      \end{axis}
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
+
+% #1 - w1
+% #2 - w2
+\newcommand{\manipulateTwoTower}[2]{
+  \begin{tikzpicture}[
+    neuron/.style={circle,draw,fill=white,inner sep=0pt,minimum size=10mm},
+    invisible/.style={circle,inner sep=0pt,minimum size=10mm},
+    box/.style={rectangle,draw=gray,fill=gray!20,rounded corners=5pt,minimum width=3.5cm,minimum height=5.5cm}
+    ]
+    
+    \begin{scope}
+      \node(output) [neuron] {};
+
+      \node(box0) [box,left=of output,xshift=2.5mm,yshift=3cm] {};
+      \node(box1) [box,left=of output,xshift=2.5mm,yshift=-3cm] {};
+      
+      \node(box0output) [neuron,left=of output,yshift=3cm] {};
+      \node(box0s1) [invisible,left=of box0output,yshift=1cm] {};
+      \node(box0s2) [neuron,left=of box0output,yshift=-1cm] {$0.8$};
+      \node(box0s0) [neuron,above] at (box0s1.north) {$0.1$};
+      \node(box0s3) [neuron,below] at (box0s2.south) {$0.9$};
+
+      \node(box1output) [neuron,left=of output,yshift=-3cm] {};
+      \node(box1s1) [neuron,left=of box1output,yshift=1cm] {$0.8$};
+      \node(box1s2) [invisible,left=of box1output,yshift=-1cm] {};
+      \node(box1s0) [neuron,above] at (box1s1.north) {$0.7$};
+      \node(box1s3) [neuron,below] at (box1s2.south) {$0.3$};
+
+      \node(x) [neuron,left=of box0s3] {$x$};
+      \node(y) [neuron,left=of box1s0] {$y$};
+      
+      \foreach \x in {0,...,3} {
+        \draw[->] (box0s\x) to (box0output);
+        \draw[->] (box1s\x) to (box1output);
+      }
+      
+      \draw[->] (x) to (box0s0);
+      \draw[->] (x) to (box0s1);
+      \draw[->] (x) to (box1s0);
+      \draw[->] (x) to (box1s1);
+      \draw[->] (y) to (box0s2);
+      \draw[->] (y) to (box0s3);
+      \draw[->] (y) to (box1s2);
+      \draw[->] (y) to (box1s3);
+      
+      \node(box0s1a) [neuron] at (box0s1.center) {$0.2$};
+      \node(box1s2a) [neuron] at (box1s2.center) {$0.2$};
+
+      \draw[->] (box0output) -- node [blue,xshift=8mm] {$w = #1$} (output);
+      \draw[->] (box1output) -- node [blue,xshift=8mm] {$w = #2$} (output);
+
+      \draw[->] (output) -- ++(1cm, 0);
+    \end{scope}
+    
+    \begin{scope}[xshift=2cm,yshift=-2.5cm]    
+      \begin{axis}[
+        view={-30}{15},        
+        axis background/.style={fill=blue!5},
+        xlabel=$x$,
+        ylabel=$y$,
+        xtick distance=1,
+        ytick distance=1,
+        xtick={1},
+        ytick={1},
+        ztick={2},
+        title=加权输出,
+        colormap={simple}{rgb255=(235,95,95) rgb255=(255,155,145)},
+        declare function={
+          sigma(\z)=1/(1 + exp(-\z));
+ 		  f(\x,\y,\h,\b)= #1 * sigma(\b + \h * (sigma(1000 * (\x - 0.1)) - sigma(1000 * (\x - 0.2))) + \h * (sigma(1000 * (\y - 0.8)) - sigma(1000 * (\y - 0.9)))) + #2 * sigma(\b + \h * (sigma(1000 * (\x - 0.7)) - sigma(1000 * (\x - 0.8)))	+ \h * (sigma(1000 * (\y - 0.2)) - sigma(1000 * (\y - 0.3))));
+        }]
+        \addplot3[surf,domain=0:1] {
+        	f(x,y,10,-16)
+        };
+      \end{axis}
+    \end{scope}
+    
+  \end{tikzpicture}%
+}
