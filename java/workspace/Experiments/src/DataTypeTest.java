@@ -1,7 +1,7 @@
 /**
  * Created by Dachi on 16/7/2.
  */
-public class Variables {
+public class DataTypeTest {
     public static void main(String args[]){
         //Numerical
         //Byte, Short, Integer, Long, Float, Double

@@ -5,7 +5,7 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class IO {
+public class IOTest {
 
     public static void scannerTest(){
         Scanner input = new Scanner(System.in);
