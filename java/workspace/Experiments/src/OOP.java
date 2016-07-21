@@ -29,8 +29,15 @@ class Employee {
         this.salary += raise;
     }
 
-    public String getName(){
+    public final String getName(){
         return name;
+    }
+}
+
+class Manager extends Employee {
+    public Manager(String name, double salary){
+        super(name,salary);
+        bonus = 0;
     }
 }
 
@@ -73,7 +80,6 @@ class Network {
     }
 
     private ArrayList<Member> members;
-
 
 }
 
