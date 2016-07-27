@@ -2,28 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b036281f-442d-4334-93d8-d0686ac9c7fb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Experiments/Data_Time.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Experiments/IO.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Experiments/Regexp.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Experiments/Variables.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/BigNumber.class" afterPath="$PROJECT_DIR$/out/production/Experiments/BigNumber.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/ClassTest.class" afterPath="$PROJECT_DIR$/out/production/Experiments/ClassTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/CreditCardForm.class" afterPath="$PROJECT_DIR$/out/production/Experiments/CreditCardForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/Employee.class" afterPath="$PROJECT_DIR$/out/production/Experiments/Employee.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/Experiments.class" afterPath="$PROJECT_DIR$/out/production/Experiments/Experiments.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/OOP.class" afterPath="$PROJECT_DIR$/out/production/Experiments/OOP.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/Puppy.class" afterPath="$PROJECT_DIR$/out/production/Experiments/Puppy.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Experiments/StringTest.class" afterPath="$PROJECT_DIR$/out/production/Experiments/StringTest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DS_Algo_In_Java/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../LeetCode/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../LeetCode/LC/LC.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/AbstractBinaryTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/AbstractMap.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/AbstractPriorityQueue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/AbstractTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/ArrayList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/ArrayQueue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/ArrayStack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/BinaryTree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/CircularQueue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/DefaultComparator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Deque.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Entry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/LinkedListAlgo.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/LinkedPositionalList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/LinkedQueue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/LinkedStack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/List.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Map.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Position.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/PositionList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/PriorityQueue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Queue.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/SinglyLinkedList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Stack.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/StringAlgos.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/StringLengthComparator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Tree.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../DataStructInJava/src/WordCount.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../LeetCode/.idea/vcs.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DataStructInJava/bin/Main.class" afterPath="$PROJECT_DIR$/../DataStructInJava/bin/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../python/LPTHW" afterPath="$PROJECT_DIR$/../../../python/LPTHW" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../ai/readme.txt" afterPath="$PROJECT_DIR$/../../../ai/readme.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DataStructInJava/src/Main.java" afterPath="$PROJECT_DIR$/../DataStructInJava/src/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CollectionTest.java" afterPath="$PROJECT_DIR$/src/CollectionTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Experiments.java" afterPath="$PROJECT_DIR$/src/Experiments.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/InterfaceTest.java" afterPath="$PROJECT_DIR$/src/InterfaceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/LambdaTest.java" afterPath="$PROJECT_DIR$/src/LambdaTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/OOP.java" afterPath="$PROJECT_DIR$/src/OOP.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LeetCode/.idea/misc.xml" afterPath="$PROJECT_DIR$/../LeetCode/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LeetCode/.idea/modules.xml" afterPath="$PROJECT_DIR$/../LeetCode/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LeetCode/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../LeetCode/.idea/workspace.xml" />
     </list>
     <ignored path="Experiments.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,13 +77,11 @@
       <file leaf-file-name="OOP.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/OOP.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5970149">
+            <state vertical-scroll-proportion="0.5798005">
               <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#530#531#0" expanded="true" />
-                <element signature="e#561#562#0" expanded="true" />
                 <element signature="e#735#736#0" expanded="true" />
                 <element signature="class#CreditCardForm#0" expanded="false" />
                 <element signature="class#Invoice#0" expanded="false" />
@@ -221,27 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Experiments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Experiments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Experiments" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -270,6 +265,27 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Experiments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Experiments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Experiments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -825,11 +841,13 @@
       <workItem from="1468938808058" duration="1378000" />
       <workItem from="1468940536950" duration="844000" />
       <workItem from="1468960267327" duration="1179000" />
+      <workItem from="1469279691166" duration="593000" />
+      <workItem from="1469291481869" duration="108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19125000" />
+    <option name="totallyTimeSpent" value="19826000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -852,7 +870,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942554" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20958512" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20958512" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -930,6 +948,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/LambdaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LambdaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/OOP.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -937,9 +971,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="class#Employee#0" expanded="false" />
+            <element signature="e#735#736#0" expanded="true" />
             <element signature="class#CreditCardForm#0" expanded="false" />
             <element signature="class#Invoice#0" expanded="false" />
+            <element signature="class#Network#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -959,9 +994,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="class#Employee#0" expanded="false" />
+            <element signature="e#735#736#0" expanded="true" />
             <element signature="class#CreditCardForm#0" expanded="false" />
             <element signature="class#Invoice#0" expanded="false" />
+            <element signature="class#Network#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1105,6 +1141,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/LambdaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OOP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5798005">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="class#CreditCardForm#0" expanded="false" />
+            <element signature="class#Invoice#0" expanded="false" />
+            <element signature="class#Network#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AmazonOATest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1118,31 +1177,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LambdaTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OOP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5970149">
-          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#530#531#0" expanded="true" />
-            <element signature="e#561#562#0" expanded="true" />
-            <element signature="e#735#736#0" expanded="true" />
-            <element signature="class#CreditCardForm#0" expanded="false" />
-            <element signature="class#Invoice#0" expanded="false" />
-            <element signature="class#Network#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

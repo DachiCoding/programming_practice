@@ -37,7 +37,6 @@ class Employee {
 class Manager extends Employee {
     public Manager(String name, double salary){
         super(name,salary);
-        bonus = 0;
     }
 }
 
