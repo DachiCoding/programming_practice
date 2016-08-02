@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Testing Promise</title>
+    </head>
+    <body>
+        <script>
+            console.log("Begining of the sync script");
+            var prom = new Promise(function(res,rej){
+                console.log("A promise started.");
+                window.setTimeout(
+                    function() {
+                    // We fulfill the promise !
+                    res(1);
+                }, Math.random() * 2000 + 1000);
+                console.log("Is the resolver skipped?");
+            });
+            
+            prom.then(function(value){
+                console.log("Fulfilled.");
+                console.log(value);
+            }).catch(function(error){
+                console.log("Error");
+            });
+
+            console.log("End of the sync script");
+        </script>
+    </body>
+</html>
