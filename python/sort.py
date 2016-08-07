@@ -29,10 +29,16 @@ def selection_sort(array):
                 minIdx = j
         swap(array,i,minIdx)
 
-
 def insertion_sort(array):
   # Idea: keep array sorted by incrementing the length of subarray
   # Work better with sorted array
+    size = len(array)
+    for i in range(1,size):
+        j = i
+        while j > 0 and array[j] < array[j-1]:
+            swap(array,j,j-1)
+            j -= 1
+
     size = len(array)
     for i in range(1,size):
         j = i
@@ -55,6 +61,7 @@ def shell_sort(array):
                 swap(array,j,j-h)
                 j -= h
         h = h / 3
+
 
 def merge(array,aux,lo,mid,hi):
     # copy array to aux
@@ -118,6 +125,23 @@ def quick_sort(array,lo,hi):
 
 def quick_sort_wrapper(array):
   quick_sort(array,0,len(array)-1)
+
+def quick_sort_second(array,lo,hi):
+    if lo >= hi: return array
+    key = array[lo]
+    lIdx = lo
+    hIdx = hi
+
+    while lIdx < hIdx:
+        while array[hIdx] >= key and lIdx < hIdx:
+            hIdx -= 1
+        while array[lIdx] <= key and lIdx < hIdx:
+            lIdx += 1
+        swap(array,lIdx,hIdx)
+    swap(array,lo,lIdx)
+    quick_sort_second(array,lo,lIdx-1)
+    quick_sort_second(array,hIdx+1,hi)
+
 
 def shift_down(array,start,end):
   root = start
