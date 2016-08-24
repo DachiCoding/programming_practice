@@ -66,3 +66,13 @@ appendElement();
 insertElementHead();
 removeElementEnd();
 addRemoveElementIndex();
+
+/*
+ *
+ * arr.push() => add to end
+ * arr.unshift() => add to beg
+ * arr.pop() => remove from end
+ * arr.shift() => remove from beg
+ * arr.splice(m,n) => remove n elements starting at m
+ * arr.splice(m,n,x1,x2,x3) => revmoe n elements starting at m and insert (x1...x3)
+ * */
