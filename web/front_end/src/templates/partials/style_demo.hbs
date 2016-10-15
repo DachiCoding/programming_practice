@@ -1,0 +1,93 @@
+<hr/>
+<h2>CSS</h2>
+
+<h3>Selector</h3>
+<table border="1">
+    <tr><td>select all</td><td><details>
+        <summary>*</summary>
+        <button class="changeAllColor" value="blue">All blue</button>
+        <button class="changeAllColor" value="red">All red</button>
+        <button class="changeAllColor" value="green">All green</button>
+    </details></td></tr>
+    <tr><td>select class</td><td>.class</td></tr>
+    <tr><td>select id</td><td>#id</td></tr>
+    <tr><td>select attribute</td><td><details><summary>[attr]</summary>
+        [attr="val"]等于<br/>
+        [attr^="val"]开始<br/>
+        [attr$="val"]结尾<br/>
+        [attr*="val"]字符里包含<br/>
+        [attr~="val"]包含多个attr,其中一个是val<br/>
+        [attr|="val"]hyphen前是val,比如val-data-id<br/>
+    </details></td></tr>
+    <tr><td>s1,s2</td><td>select s1 or s2</td></tr>
+    <tr><td>s1 s2</td><td>select s2 under s1</td></tr>
+    <tr><td>s1 > s2</td><td>select s2 which is child of s1</td></tr>
+    <tr><td>s1 + s2</td><td>select s2 which is s1's immediate sibling</td></tr>
+    <tr><td>s1 ~ s2</td><td>select s2 which is s1's sibling</td></tr>
+    <tr><td>::first-line</td><td>select first line</td></tr>
+    <tr><td>::first-letter</td><td>select first letter</td></tr>
+    <tr><td>::before</td><td>select before</td></tr>
+    <tr><td>::after</td><td>select after</td></tr>
+    <tr><td>::root</td><td>select root</td></tr>
+    <tr><td>:child</td><td><details><summary>select child</summary>
+        :first-child<br/>
+        :last-child<br/>
+        :only-child<br/>
+        :only-of-type<br/>
+        :nth-child<br/>
+        :nth-last-child<br/>
+        :nth-of-type<br/>
+        :nth-last-of-type<br/>
+    </details></td></tr>
+    <tr><td>:UI pseudo class</td><td><details><summary>select elements satsifying the attr</summary>
+        :enable or :disabled<br/>
+        :checked<br/>
+        :default<br/>
+    </details></td></tr>
+</table>
+
+<h3>Border and Background</h3>
+<p id="p1">Paragraph in a border</p><br/>
+<p id="p2">Paragraph in a dashed border</p><br/>
+<p id="p3">Paragraph with a thick head</p><br/>
+<p id="p4">P with radius border</p><br/>
+<p id="p5">I have border, I have background, Oh, border-background</p><br/>
+<p id="p6">I have border, I have shadow, Oh, border-shadow</p><br/>
+<p id="p7">I have outline</p><br/>
+
+<h3>Box model</h3>
+<p id="p8">I have paddings</p><br/>
+<p id="p9">I have margins</p><br/>
+<p id="p10">I am border-box</p><br/>
+<p id="p11">I am content-box</p><br/>
+<p id="p12">
+    Hear my words and bear witness to my vow.
+    Night gathers and now my watch begins.
+    It shall not end untill my death.
+    I shall take no wife,hold no lands,father no children.
+    I shall wear no crowns and win no glory.
+    I shall live and die at my post.
+    I am the sword in the darkness.
+    I am the watcher on the walls.
+    I am the shield the guards the realms of men.
+    I pledge my life and honor to The Night's Watch for this night and all the nights to come.
+</p><br/>
+
+<div>
+<p id="p13">Do you want to see me?</p><br/>
+<button class="changeVis">Visible</button>
+<button class="changeVis">Collapse</button>
+<button class="changeVis">Hidden</button>
+    </div>
+<br/><br/>
+
+<p id="p14">I am an inline p.</p>
+<p id="p15">I need to be here to prove what he said.</p>
+
+<h3>Layout</h3>
+
+<h3>Text</h3>
+
+<h3>Animation</h3>
+
+<h3>Others</h3>

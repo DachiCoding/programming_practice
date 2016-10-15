@@ -1,9 +1,0 @@
-{
-    "name":"JavaScript-exercises",
-    "version":"0.0.1",
-    "description":"A collections of JavaScript practice codes",
-    "main":"main.js",
-    "scripts": {
-        "start": "node main.js"
-    }
-}

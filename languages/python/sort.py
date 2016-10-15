@@ -141,7 +141,7 @@ def quick_sort_second(array,lo,hi):
         swap(array,lIdx,hIdx)
     swap(array,lo,lIdx)
     quick_sort_second(array,lo,lIdx-1)
-    quick_sort_second(array,hIdx+1,hi)
+    quick_sort_second(array,lIdx+1,hi)
 
 
 def shift_down(array,start,end):
