@@ -1,0 +1,23 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+/.idea
+ehthumbs.db
+Thumbs.db
+
+# Node
+/node_modules
+
+# react-desktop #
+########
+
+/lib
+/build
+
+# Logs
+logs
+*.log
+npm-debug.log*

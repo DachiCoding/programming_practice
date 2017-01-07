@@ -1,0 +1,16 @@
+/build
+/docs
+/examples
+/lib
+/node_modules
+/playground
+/test
+/.idea
+/.babelrc
+/.codeclimate.yml
+/.editorconfig
+/.eslintrc
+/.npmignore
+/.travis.yml
+/CONTRIBUTING.md
+/npm-debug.log

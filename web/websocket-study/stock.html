@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en>
+    <head>
+        <title>Stock</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    </head>
+    <body>
+        <div class="vertical-center">
+            <div class="container">
+                <h1>Stock Chart over WebSocket</h1>
+                <table class="table" id="stockTabel">
+                <thead>
+                    <tr>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="stockRows">
+                <tr>
+                    <td><h3>AAPL</h3></td>
+                    <td id="AAPL">
+                    <h3><span class="label label-default">95.00</span></h3>
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+var stock_request = {"stocks": ["AAPL", "MSFT", "AMZN", "GOOG", "YHOO"]};
+
+var stocks = {"AAPL": 0,
+			  "MSFT": 0,
+			  "AMZN": 0,
+			  "GOOG": 0,
+			  "YHOO": 0};
+
+            var ws = new WebSocket("ws://localhost:8181");
+            ws.onopen = function(e) {
+                console.log('connected');
+                ws.send(JSON.stringify(stock_request));
+            }
+            ws.onmessage=function(e){
+                console.log('rec msg');
+            }
+            ws.error=function(e){
+                console.log('error');
+            }
+        </script>
+    </body>
+</html>
