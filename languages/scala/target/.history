@@ -1,4 +1,0 @@
-console
-exit
-val func_list = for(i <- 1 to 3) yield ((x:Int) => x + i)
-console
