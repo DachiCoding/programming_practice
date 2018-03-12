@@ -1,0 +1,234 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Palanquin;
+	line-height: 1.618em;
+	background: #3498db;
+	color: #fff;
+}
+
+.wrapper {
+	max-width: 50rem;
+	width: 100%;
+	margin: 5rem auto;
+	text-align: center;
+}
+
+h1.loading {
+	font-size: 3em;
+	font-weight: 400;
+}
+
+span[class^='dot_'] {
+	opacity: 0;
+}
+
+.dot_one {
+	animation: dot_one 2s infinite linear;
+}
+
+.dot_two {
+	animation: dot_two 2s infinite linear;
+}
+
+.dot_three {
+	animation: dot_three 2s infinite linear;
+}
+
+@keyframes dot_one {
+	0% {
+		opacity: 0;
+	}
+	15% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes dot_two {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes dot_three {
+	0% {
+		opacity: 0;
+	}
+	65% {
+		opacity: 0;
+	}
+	75% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.bouncing_ball {
+	position: relative;
+	width: 4rem;
+	margin: 0 auto;
+	height: 12rem;
+}
+
+.ball {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+	background: #fff;
+	position: absolute;
+	top: 0;
+	animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+	0% {
+		top: 0;
+		animation-timing-function: ease-in;
+	}
+	34% {
+		height: 4rem;
+		width: 4rem;
+	}
+	35% {
+		top: 8rem;
+		height: 3rem;
+		width: 4.3rem;
+		animation-timing-function: ease-out;
+	}
+	45% {
+		height: 4rem;
+		width: 4rem;
+	}
+	90% {
+		top: 0;
+	}
+	100% {
+		top: 0;
+	}
+}
+
+.spinner {
+	position: relative;
+	width: 6rem;
+	height: 6rem;
+	margin: 0 auto;
+	margin-top: 6rem;
+	margin-bottom: 6rem;
+}
+
+div[class^='curve_']{
+	position: absolute;
+	transform: rotate(135deg);
+	animation: spin 4s infinite;
+}
+
+.curve_top_left {
+	width: 3rem;
+	height: 3rem;
+	border-top: 0.5rem solid #fff;
+	border-left: 0.5rem solid #fff;
+	border-top-left-radius: 200%;
+	top: 0;
+	left: 0;
+	transform-origin: 100% 100%;
+}
+
+.curve_bottom_right {
+	width: 3rem;
+	height: 3rem;
+	border-bottom: 0.5rem solid #fff;
+	border-right: 0.5rem solid #fff;
+	border-bottom-right-radius: 200%;
+	bottom: 0;
+	right: 0;
+	transform-origin: 0% 0%;
+}
+
+.curve_top_right {
+	width: 2rem;
+	height: 2rem;
+	border-top: 0.5rem solid #fff;
+	border-right: 0.5rem solid #fff;
+	border-top-right-radius: 200%;
+	top: 1rem;
+	right: 1rem;
+	transform-origin: 0% 100%;
+}
+
+.curve_bottom_left {
+	width: 2rem;
+	height: 2rem;
+	border-bottom: 0.5rem solid #fff;
+	border-left: 0.5rem solid #fff;
+	border-bottom-left-radius: 200%;
+	bottom: 1rem;
+	left: 1rem;
+	transform-origin: 100% 0%;
+}
+
+.center_circle {
+	width: 1.5rem;
+	height: 1.5rem;
+	background: #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: 2.25rem;
+	left: 2.25rem;
+	animation: pulse 2s infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(135deg);
+		opacity: 1;
+	}
+
+	25% {
+		opacity: 0.75;
+	}
+
+	50% {
+		transform: rotate(675deg);
+		opacity: 1;
+	}
+
+	75% {
+		opacity: 0.75;
+	}
+
+	100% {
+		transform: rotate(135deg);
+		opacity: 1;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.5;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
