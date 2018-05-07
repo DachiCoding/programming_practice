@@ -1,7 +1,11 @@
 body {
+}
+
+.page {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100vw;
     height: 100vh;
 }
 
@@ -39,4 +43,108 @@ input:checked + label {
 input:checked + label:after {
     transform:  translate3d(50px, 0, 0);
     background-color: #1d6269;
+}
+
+#page-loader {
+    width: 150px;
+    height: 150px;
+}
+
+#page-loader circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+}
+
+#page-loader circle:nth-child(1) {
+    stroke: #ffc114;
+    stroke-dasharray: 50;
+}
+
+#page-loader circle:nth-child(2) {
+    stroke: #ff5248;
+    stroke-dasharray: 100;
+}
+
+#page-loader circle:nth-child(3) {
+    stroke: #19cdca;
+    stroke-dasharray: 180;
+}
+
+#page-loader circle:nth-child(4) {
+    stroke: #4e80e1;
+    stroke-dasharray: 350;
+    stroke-dashoffset: -100;
+}
+
+@keyframes loader {
+    50% {
+        transform: rotate(360deg);
+    }
+}
+
+#page-loader circle {
+    animation-name: loader;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: 50% 50%;
+}
+
+#page-loader circle:nth-child(1) {
+    animation-delay: -.2s;
+}
+
+#page-loader circle:nth-child(2) {
+    animation-delay: -.4s;
+}
+
+#page-loader circle:nth-child(3) {
+    animation-delay: -.6s;
+}
+
+#page-loader circle:nth-child(4) {
+    animation-delay: -.8s;
+}
+
+.hamburger-button {
+    position: relative;
+    width: 45px;
+    height: 34px;
+}
+
+.hamburger-button span {
+    position: absolute;
+    height: 8px;
+    border-radius: 4px;
+    width: 100%;
+    background-color: #3d4146;
+    top: 0;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.hamburger-button span:nth-child(1) {
+    top: 0px;
+}
+
+.hamburger-button span:nth-child(2),
+.hamburger-button span:nth-child(3) {
+    top: 13px;
+}
+
+.hamburger-button span:nth-child(4) {
+    top: 26px;
+}
+
+.hamburger-button.active span:nth-child(1),
+.hamburger-button.active span:nth-child(4) {
+    opacity: 0;
+}
+
+.hamburger-button.active span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.hamburger-button.active span:nth-child(3) {
+    transform: rotate(-45deg);
 }
